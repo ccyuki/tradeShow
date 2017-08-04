@@ -46,6 +46,6 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.startBtn.setText(_translate("MainWindow", "start"))
-        #self.stopBtn.setText(_translate("MainWindow", "stop"))
+        self.stopBtn.setText(_translate("MainWindow", "stop"))
 
 
