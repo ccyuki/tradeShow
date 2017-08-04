@@ -13,8 +13,7 @@ class Code_MainWindow(Ui_MainWindow):#修改为从Ui_MainWindow继承
         super(Code_MainWindow, self).__init__(parent)
         self.setupUi(self)
         self.startBtn.clicked.connect(self.startPlot)
-        print ("Code_mainwindow...startBtn connect")
-        #self.stopBtn.clicked.connect(self.stopPlot)
+        self.stopBtn.clicked.connect(self.stopPlot)
         
     def startPlot(self):
         self.mplCanvas.startPlot()

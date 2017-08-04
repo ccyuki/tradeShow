@@ -34,8 +34,10 @@ class MplCanvas(FigureCanvas):
         self.ax.xaxis.set_minor_locator(SecondLocator([10,20,30,40,50])) # every 10 second is a minor locator 
         self.ax.xaxis.set_major_formatter( DateFormatter('%H:%M:%S') ) #tick label formatter 
         self.curveObj = None # draw object
+        print ("MplCanvas")
  
     def plot(self, datax, datay): 
+        print ("plot")
         if self.curveObj is None: 
             #create draw object once 
             self.curveObj = self.ax.plot_date(np.array(datax), np.array(datay),'bo-')
@@ -68,6 +70,7 @@ class  MplCanvasWrapper(QtWidgets.QWidget):
  
     def pausePlot(self): 
         self.__generating = False 
+        print("canvas stop plot")
         pass
  
     def initDataGenerator(self): 
@@ -85,7 +88,6 @@ class  MplCanvasWrapper(QtWidgets.QWidget):
         print ("generateData")
         counter=0 
         while(True): 
-            print ("while")
             if self.__exit: 
                 print ("exit.....")
                 break 
@@ -93,9 +95,11 @@ class  MplCanvasWrapper(QtWidgets.QWidget):
                 print("generating....")
                 newData = random.randint(Y_MIN, Y_MAX) 
                 newTime= date2num(datetime.now()) 
+                print ("newData:%s , newTime:%s" % (newData, newTime))
                 self.dataX.append(newTime) 
                 self.dataY.append(newData) 
-                self.canvas.plot(self.dataX, self.dataY) 
+                print (self.dataX, self.dataY)
+                self.canvas.plot(self.dataX, self.dataY)                 
                 if counter >= MAXCOUNTER: 
                     self.dataX.pop(0) 
                     self.dataY.pop(0)
