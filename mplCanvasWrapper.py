@@ -101,8 +101,8 @@ class  MplCanvasWrapper(QtWidgets.QWidget):
                 #newDataPrice = stockData.price[0]
                 #newDataA2_p  = stockData.a2_p[0]
                 #newTime = stockData.date[0]+" "+stockData.time[0]
-                newDataPrice = random.randint(Y_MIN, Y_MAX) 
-                newDataA2_p  = random.randint(Y_MIN, Y_MAX) 
+                newDataPrice = random.randint(1, 100) 
+                newDataA2_p  = random.randint(1, 100) 
                 newTime= date2num(datetime.now()) 
                 self.dataX.append(newTime) 
                 self.dataY['price'].append(newDataPrice)
