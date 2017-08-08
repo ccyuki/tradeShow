@@ -67,7 +67,7 @@ class MplCanvas(FigureCanvas):
         ticklabels = self.ax.xaxis.get_ticklabels() 
         for tick in ticklabels: 
             tick.set_rotation(25)   # x轴标签旋转25°
-        self.fig.legend([self.curveObj[0], self.curveObj[1]], ['first', 'second'], loc = 'best')  # 多个axes的图例
+        self.fig.legend([self.curveObj[0], self.curveObj[1]], ['first', 'second'], loc = 'upper right')  # 多个axes的图例
         self.draw()
  
 class  MplCanvasWrapper(QtWidgets.QWidget): 
@@ -83,8 +83,9 @@ class  MplCanvasWrapper(QtWidgets.QWidget):
         self.dataY= {'price':[], 'a2_p':[]}
         self.initDataGenerator()
  
-    def startPlot(self): 
+    def startPlot(self, code): 
         self.__generating = True
+        self.code = code
  
     def pausePlot(self): 
         self.__generating = False
@@ -107,7 +108,8 @@ class  MplCanvasWrapper(QtWidgets.QWidget):
                 print ("exit.....")
                 break 
             if self.__generating:
-                stockData = ts.get_realtime_quotes('399300')
+                stockCode = self.code
+                stockData = ts.get_realtime_quotes(stockCode)
                 if stockData is None:
                     continue
                 newDataPrice = float(stockData.price[0])

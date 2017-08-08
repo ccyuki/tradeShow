@@ -19,6 +19,10 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.gridLayout.setObjectName("gridLayout")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
+        self.codeLabel = QtWidgets.QLabel('Stock Code:')
+        self.codeLineEdit = QtWidgets.QLineEdit("399300")
+        self.horizontalLayout.addWidget(self.codeLabel)
+        self.horizontalLayout.addWidget(self.codeLineEdit)
         self.startBtn = QtWidgets.QPushButton(self.centralwidget)
         self.startBtn.setObjectName("startBtn")
         self.horizontalLayout.addWidget(self.startBtn)
@@ -44,7 +48,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "TradeInfoShow"))
         self.startBtn.setText(_translate("MainWindow", "start"))
         self.stopBtn.setText(_translate("MainWindow", "stop"))
 

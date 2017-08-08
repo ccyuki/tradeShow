@@ -16,7 +16,8 @@ class Code_MainWindow(Ui_MainWindow):#修改为从Ui_MainWindow继承
         self.stopBtn.clicked.connect(self.stopPlot)
         
     def startPlot(self):
-        self.mplCanvas.startPlot()
+        code = self.codeLineEdit.text()
+        self.mplCanvas.startPlot(code)
         pass
     
     def stopPlot(self):
