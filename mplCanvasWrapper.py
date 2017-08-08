@@ -17,7 +17,7 @@ import tushare as ts
 X_MINUTES = 1 
 INTERVAL = 1
  
-MAXCOUNTER = int(X_MINUTES * 60/ INTERVAL)
+MAXCOUNTER = 300
  
 class MplCanvas(FigureCanvas): 
     def __init__(self): 
