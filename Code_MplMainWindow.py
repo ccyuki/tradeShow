@@ -6,6 +6,8 @@
 
 from PyQt5 import QtGui,QtCore, QtWidgets
 from Ui_MplMainWindow import Ui_MainWindow
+from mplCanvasWrapper import MplCanvasWrapper
+from historyShowWrapper import HistoryShowWrapper
 import sys
 
 class Code_MainWindow(Ui_MainWindow):#修改为从Ui_MainWindow继承
@@ -16,6 +18,19 @@ class Code_MainWindow(Ui_MainWindow):#修改为从Ui_MainWindow继承
         self.stopBtn.clicked.connect(self.stopPlot)
         
     def startPlot(self):
+        self.func = self.funcComboBox.currentIndex()
+        if self.func is 0:
+            self.mplCanvas = MplCanvasWrapper(self.centralwidget)
+        elif self.func is 1:
+            self.mplCanvas = HistoryShowWrapper(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.mplCanvas.sizePolicy().hasHeightForWidth())
+        self.mplCanvas.setSizePolicy(sizePolicy)
+        self.mplCanvas.setObjectName("mplCanvas")
+        self.gridLayout.addWidget(self.mplCanvas, 1, 0, 1, 1)
+        
         code = self.codeLineEdit.text()
         self.mplCanvas.startPlot(code)
         pass

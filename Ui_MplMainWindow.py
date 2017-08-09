@@ -7,7 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from mplCanvasWrapper import MplCanvasWrapper
+from baseWrapper import BaseWrapper
 
 class Ui_MainWindow(QtWidgets.QMainWindow):
     def setupUi(self, MainWindow):
@@ -19,6 +19,10 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         self.gridLayout.setObjectName("gridLayout")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
+        self.funcComboBox = QtWidgets.QComboBox()
+        self.funcComboBox.insertItem(0, self.tr("实时行情"))
+        self.funcComboBox.insertItem(1, self.tr("历史行情"))
+        self.horizontalLayout.addWidget(self.funcComboBox)
         self.codeLabel = QtWidgets.QLabel('Stock Code:')
         self.codeLineEdit = QtWidgets.QLineEdit("399300")
         self.horizontalLayout.addWidget(self.codeLabel)
@@ -32,8 +36,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         spacerItem = QtWidgets.QSpacerItem(200, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
         self.gridLayout.addLayout(self.horizontalLayout, 0, 0, 1, 1)
-        
-        self.mplCanvas = MplCanvasWrapper(self.centralwidget)
+        self.mplCanvas = BaseWrapper(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
